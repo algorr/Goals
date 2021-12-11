@@ -21,12 +21,12 @@ class AuthService {
     return user.user;
   }
 
-  /*Future<User?> isCurrentUser() async {
+  Future<User?> isCurrentUser() async {
     var user = await _firebaseAuth.currentUser;
     if (user != null) {
       return user;
     } else {
       return null;
     }
-  }*/
+  }
 }

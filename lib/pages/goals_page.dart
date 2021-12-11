@@ -45,7 +45,10 @@ class _GoalsPageState extends State<GoalsPage> {
         backgroundColor: const Color(0xFF2d3447),
         elevation: 0,
         centerTitle: true,
-        leading: const Icon(Icons.menu_rounded,color: Colors.white,),
+        leading: const Icon(
+          Icons.menu_rounded,
+          color: Colors.white,
+        ),
         title: const Text(
           "Goals",
           style: TextStyle(
@@ -56,8 +59,11 @@ class _GoalsPageState extends State<GoalsPage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.indigo,
-        child: const Icon(Icons.plus_one_rounded),
+        backgroundColor: Colors.white,
+        child: const Icon(
+          Icons.plus_one_rounded,
+          color: Colors.black,
+        ),
         elevation: 15,
         onPressed: () {},
       ),
@@ -65,33 +71,23 @@ class _GoalsPageState extends State<GoalsPage> {
         physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
-            /*Container(
-              padding: const EdgeInsets.only(left: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: const [
-                  Text(
-                    "Goals",
-                    style: TextStyle(
-                        color: Colors.indigo,
-                        fontFamily: 'Dongle',
-                        fontSize: 55,
-                        fontWeight: FontWeight.bold),
-                  )
-                ],
-              ),
-            ),*/
             Stack(
               children: [
                 CardScrollWidget(currentPage),
                 Positioned.fill(
-                  child: PageView.builder(
-                    itemCount: images.length,
-                    controller: controller,
-                    reverse: true,
-                    itemBuilder: (context, index) {
-                      return Container();
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const DetailScreen()));
                     },
+                    child: PageView.builder(
+                      itemCount: images.length,
+                      controller: controller,
+                      reverse: true,
+                      itemBuilder: (context, index) {
+                        return Container();
+                      },
+                    ),
                   ),
                 )
               ],
@@ -108,7 +104,7 @@ class CardScrollWidget extends StatelessWidget {
   var padding = 20.0;
   var verticalInset = 20.0;
 
-  CardScrollWidget(this.currentPage);
+  CardScrollWidget(this.currentPage, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -187,8 +183,7 @@ class CardScrollWidget extends StatelessWidget {
                                     horizontal: 22.0, vertical: 6.0),
                                 decoration: BoxDecoration(
                                     color: Colors.blueAccent,
-                                    borderRadius:
-                                        BorderRadius.circular(20.0)),
+                                    borderRadius: BorderRadius.circular(20.0)),
                                 child: const Text("Edit",
                                     style: TextStyle(color: Colors.white)),
                               ),

@@ -16,23 +16,23 @@ class _HomePageState extends State<HomePage> {
   List<Widget> tumSayfalar = [];
   int _currentIndex = 0;
 
-  GoalsPage _goalsPage = GoalsPage();
-  NotificationPage _notificationPage = NotificationPage();
-  MessagePage _messagePage = MessagePage();
-  ProfilePage _profilePage = ProfilePage();
+  GoalsPage _goalsPage = const GoalsPage();
+  NotificationPage _notificationPage = const NotificationPage();
+  MessagePage _messagePage = const MessagePage();
+  ProfilePage _profilePage = const ProfilePage();
 
-  var keyGoals = PageStorageKey('keyGoals');
-  var keyNoti = PageStorageKey('keyNoti');
-  var keyProfile = PageStorageKey('keyProfile');
-  var keyMessage = PageStorageKey('keyMessage');
+  var keyGoals   = const PageStorageKey('keyGoals');
+  var keyNoti    = const PageStorageKey('keyNoti');
+  var keyProfile = const PageStorageKey('keyProfile');
+  var keyMessage = const PageStorageKey('keyMessage');
 
-  //var keyP = PageStorageKey('keyShow');
+  
 
   PageController? _pageController;
 
   @override
   void initState() {
-    // TODO: implement initState
+    
     super.initState();
     _notificationPage = NotificationPage(
       key: keyNoti,
@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
+    
     super.dispose();
     _pageController?.dispose();
   }
@@ -72,22 +72,22 @@ class _HomePageState extends State<HomePage> {
         },
         items: [
           BottomNavyBarItem(
-            icon: Icon(Icons.home_rounded),
-            title: Text('Home'),
+            icon: const Icon(Icons.home_rounded),
+            title: const Text('Home'),
             inactiveColor: Colors.black,
             activeColor: Colors.indigoAccent,
             textAlign: TextAlign.center,
           ),
           BottomNavyBarItem(
-            icon: Icon(Icons.notifications_rounded),
-            title: Text('Notification'),
+            icon: const Icon(Icons.notifications_rounded),
+            title: const Text('Notification'),
             inactiveColor: Colors.black,
             activeColor: Colors.indigoAccent,
             textAlign: TextAlign.center,
           ),
           BottomNavyBarItem(
-            icon: Icon(Icons.inbox_rounded),
-            title: Text(
+            icon: const Icon(Icons.inbox_rounded),
+            title: const Text(
               'Messages',
             ),
             inactiveColor: Colors.black,
@@ -95,8 +95,8 @@ class _HomePageState extends State<HomePage> {
             textAlign: TextAlign.center,
           ),
           BottomNavyBarItem(
-            icon: Icon(Icons.person_rounded),
-            title: Text(
+            icon: const Icon(Icons.person_rounded),
+            title: const Text(
               'Profile',
             ),
             inactiveColor: Colors.black,
