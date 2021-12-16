@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:goals/pages/home_page.dart';
 import 'package:goals/pages/landing_page.dart';
-
 import 'package:goals/services/firebase_auth.dart';
 import 'package:goals/widgets/sign_in_button.dart';
 import 'package:goals/widgets/sign_up_button.dart';
