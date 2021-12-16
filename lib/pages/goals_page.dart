@@ -1,7 +1,8 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
-
+import 'package:goals/pages/landing_page.dart';
+import 'package:goals/services/firebase_auth.dart';
+import 'package:provider/provider.dart';
 import 'detail_page.dart';
 
 var cardAspectRatio = 12.0 / 16.0;
@@ -33,6 +34,7 @@ class _GoalsPageState extends State<GoalsPage> {
 
   @override
   Widget build(BuildContext context) {
+    var myAuth = Provider.of<AuthService>(context);
     PageController controller = PageController(initialPage: images.length - 1);
     controller.addListener(() {
       setState(() {
@@ -49,6 +51,15 @@ class _GoalsPageState extends State<GoalsPage> {
           Icons.menu_rounded,
           color: Colors.white,
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.logout),
+            onPressed: () async {
+              await myAuth.signOut().
+              then((value) => Navigator.of(context).push(MaterialPageRoute(builder: (context)=>LandingPage(user: myAuth.currentUser(),))));
+            },
+          ),
+        ],
         title: const Text(
           "Goals",
           style: TextStyle(
@@ -99,12 +110,19 @@ class _GoalsPageState extends State<GoalsPage> {
   }
 }
 
-class CardScrollWidget extends StatelessWidget {
+class CardScrollWidget extends StatefulWidget {
   var currentPage;
-  var padding = 20.0;
-  var verticalInset = 20.0;
 
   CardScrollWidget(this.currentPage, {Key? key}) : super(key: key);
+
+  @override
+  State<CardScrollWidget> createState() => _CardScrollWidgetState();
+}
+
+class _CardScrollWidgetState extends State<CardScrollWidget> {
+  var padding = 20.0;
+
+  var verticalInset = 20.0;
 
   @override
   Widget build(BuildContext context) {
@@ -126,7 +144,7 @@ class CardScrollWidget extends StatelessWidget {
         List<Widget> cardList = [];
 
         for (var i = 0; i < images.length; i++) {
-          var delta = i - currentPage;
+          var delta = i - widget.currentPage;
           bool isOnRight = delta > 0;
 
           var start = padding +

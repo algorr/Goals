@@ -18,7 +18,7 @@ class MySignInButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(20)),
       child: TextButton(
           onPressed: () {
-            onTap;
+            onTap();
           },
           child: const Text(
             'Sign In',

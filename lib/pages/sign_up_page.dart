@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:goals/pages/home_page.dart';
 import 'package:goals/pages/landing_page.dart';
+
 import 'package:goals/services/firebase_auth.dart';
 import 'package:goals/widgets/sign_in_button.dart';
 import 'package:goals/widgets/sign_up_button.dart';
-
-
+import 'package:provider/provider.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -14,26 +15,21 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-
   bool isPasswordVisible = true;
   Color colorOfIcon = Colors.grey;
   late TextEditingController emailController;
   late TextEditingController passwordController;
 
- final AuthService _authService = AuthService();
-
-
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     emailController = TextEditingController();
     passwordController = TextEditingController();
   }
 
-
   @override
   Widget build(BuildContext context) {
+    final myAuth = Provider.of<AuthService>(context);
     return Scaffold(
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
@@ -44,10 +40,10 @@ class _SignUpPageState extends State<SignUpPage> {
                 padding: const EdgeInsets.only(top: 20, left: 50, right: 50),
                 child: Center(
                     child: Image.asset(
-                      'assets/images/goal.png',
-                      width: 200,
-                      height: 200,
-                    )),
+                  'assets/images/goal.png',
+                  width: 200,
+                  height: 200,
+                )),
               ),
               Container(
                 padding: const EdgeInsets.only(top: 15),
@@ -63,13 +59,13 @@ class _SignUpPageState extends State<SignUpPage> {
                 padding: const EdgeInsets.only(top: 25),
                 child: const Center(
                     child: Text(
-                      "Feel comfortable for your conversations in secure and enjoy the short voice messages",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontFamily: 'Yuji',
-                        fontSize: 17,
-                      ),
-                    )),
+                  "Feel comfortable for your conversations in secure and enjoy the short voice messages",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontFamily: 'Yuji',
+                    fontSize: 17,
+                  ),
+                )),
               ),
               Container(
                 padding: const EdgeInsets.only(top: 30, right: 50, left: 50),
@@ -145,27 +141,23 @@ class _SignUpPageState extends State<SignUpPage> {
                 padding: const EdgeInsets.only(top: 50),
                 child: MySignInButton(
                   onTap: () async {
-                    _authService
-                        .signIn(emailController.text, passwordController.text)
-                        .then((value) {
-                      return const LandingPage();
-                    });
-
-                    setState(() {});
+                    myAuth.signIn(
+                        emailController.text, passwordController.text);
+                    return LandingPage(
+                      user: myAuth.currentUser(),
+                    );
                   },
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 10),
                 child: MySignUpButton(
-
                   onTap: () async {
-                    _authService
-                        .signUp(emailController.text, passwordController.text)
-                        .then((value) {
-                      return const LandingPage();
-                    });
-                    setState(() {});
+                    myAuth.signUp(
+                        emailController.text, passwordController.text);
+                    return LandingPage(
+                      user: myAuth.currentUser(),
+                    );
                   },
                 ),
               ),

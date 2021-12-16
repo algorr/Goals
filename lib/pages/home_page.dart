@@ -1,4 +1,5 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:goals/pages/goals_page.dart';
 import 'package:goals/pages/notification_page.dart';
@@ -6,7 +7,8 @@ import 'package:goals/pages/profile_page.dart';
 import 'message_page.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  final Future<User?> user;
+  const HomePage({Key? key, required this.user}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -53,7 +55,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void dispose() {
-    
     super.dispose();
     _pageController?.dispose();
   }
