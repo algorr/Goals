@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:goals/pages/landing_page.dart';
 import 'package:goals/services/firebase_auth.dart';
 import 'package:goals/widgets/sign_in_button.dart';
@@ -34,6 +35,9 @@ class _SignUpPageState extends State<SignUpPage> {
         child: SafeArea(
           child: Column(
             children: [
+              const SizedBox(
+                height: 100,
+              ),
               Container(
                 padding: const EdgeInsets.only(top: 20, left: 50, right: 50),
                 child: Center(
@@ -141,9 +145,17 @@ class _SignUpPageState extends State<SignUpPage> {
                   onTap: () async {
                     myAuth.signIn(
                         emailController.text, passwordController.text);
-                    return LandingPage(
-                      user: myAuth.currentUser(),
-                    );
+                    return (emailController.text.isEmpty ||
+                            passwordController.text.isEmpty)
+                        ? Fluttertoast.showToast(
+                            msg: "Check Email and Password",
+                            toastLength: Toast.LENGTH_LONG,
+                            backgroundColor: Colors.black,
+                            gravity: ToastGravity.CENTER,
+                            textColor: Colors.white,
+                            fontSize: 16
+                          )
+                        : LandingPage(user: myAuth.currentUser());
                   },
                 ),
               ),

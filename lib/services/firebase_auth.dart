@@ -51,7 +51,7 @@ class AuthService extends ChangeNotifier {
       User? _signedInUser = _credential.user;
       return _signedInUser;
     } catch (e) {
-      //userState = UserState.notSignedIn;
+      userState = UserState.notSignedIn;
       debugPrint("Kullanıcı oturum açmada sorun oldu : " + e.toString());
       //return null;
     }
