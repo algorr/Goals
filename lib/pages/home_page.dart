@@ -2,9 +2,9 @@ import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:goals/pages/goals_page.dart';
-import 'package:goals/pages/notification_page.dart';
+import 'package:goals/pages/others_page.dart';
 import 'package:goals/pages/profile_page.dart';
-import 'message_page.dart';
+import 'box_page.dart';
 
 class HomePage extends StatefulWidget {
   final Future<User?> user;
@@ -19,12 +19,12 @@ class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
 
   GoalsPage _goalsPage = const GoalsPage();
-  NotificationPage _notificationPage = const NotificationPage();
-  MessagePage _messagePage = const MessagePage();
+  OthersPage _othersPage = const OthersPage();
+  BoxPage _messagePage = const BoxPage();
   ProfilePage _profilePage = const ProfilePage();
 
   var keyGoals   = const PageStorageKey('keyGoals');
-  var keyNoti    = const PageStorageKey('keyNoti');
+  var keyOthers    = const PageStorageKey('keyOthers');
   var keyProfile = const PageStorageKey('keyProfile');
   var keyMessage = const PageStorageKey('keyMessage');
 
@@ -36,8 +36,8 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     
     super.initState();
-    _notificationPage = NotificationPage(
-      key: keyNoti,
+    _othersPage = OthersPage(
+      key: keyOthers,
     );
     _profilePage = ProfilePage(
       key: keyProfile,
@@ -45,11 +45,11 @@ class _HomePageState extends State<HomePage> {
     _goalsPage = GoalsPage(
       key: keyGoals,
     );
-    _messagePage = MessagePage(
+    _messagePage = BoxPage(
       key: keyMessage,
     );
 
-    tumSayfalar = [_goalsPage, _notificationPage, _messagePage, _profilePage];
+    tumSayfalar = [_goalsPage, _othersPage, _messagePage, _profilePage];
     _pageController = PageController();
   }
 
@@ -80,8 +80,8 @@ class _HomePageState extends State<HomePage> {
             textAlign: TextAlign.center,
           ),
           BottomNavyBarItem(
-            icon: const Icon(Icons.notifications_rounded),
-            title: const Text('Notification'),
+            icon: const Icon(Icons.social_distance_outlined),
+            title: const Text('Others'),
             inactiveColor: Colors.black,
             activeColor: Colors.indigoAccent,
             textAlign: TextAlign.center,
@@ -89,7 +89,7 @@ class _HomePageState extends State<HomePage> {
           BottomNavyBarItem(
             icon: const Icon(Icons.inbox_rounded),
             title: const Text(
-              'Messages',
+              'Inbox',
             ),
             inactiveColor: Colors.black,
             activeColor: Colors.indigoAccent,
@@ -113,7 +113,7 @@ class _HomePageState extends State<HomePage> {
         },
         children: <Widget>[
           _goalsPage,
-          _notificationPage,
+          _othersPage,
           _messagePage,
           _profilePage,
           //Container(color: Colors.blue,),

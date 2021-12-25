@@ -55,8 +55,12 @@ class _GoalsPageState extends State<GoalsPage> {
           IconButton(
             icon: const Icon(Icons.logout),
             onPressed: () async {
-              await myAuth.signOut().
-              then((value) => Navigator.of(context).push(MaterialPageRoute(builder: (context)=>LandingPage(user: myAuth.currentUser(),))));
+              await myAuth
+                  .signOut()
+                  .then((value) => Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => LandingPage(
+                            user: myAuth.currentUser(),
+                          ))));
             },
           ),
         ],
@@ -121,7 +125,6 @@ class CardScrollWidget extends StatefulWidget {
 
 class _CardScrollWidgetState extends State<CardScrollWidget> {
   var padding = 20.0;
-
   var verticalInset = 20.0;
 
   @override
