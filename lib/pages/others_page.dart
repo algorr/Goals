@@ -10,6 +10,20 @@ class OthersPage extends StatefulWidget {
 class _OthersPageState extends State<OthersPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(color: Colors.yellow,);
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color(0xFF2d3447),
+        leading: const Padding(
+          padding: EdgeInsets.only(left: 10),
+          child: CircleAvatar(
+            backgroundImage: AssetImage("assets/images/image_03.jpg"),
+          ),
+        ),
+        title: const Text("Others"),
+        centerTitle: true,
+        leadingWidth: 45,
+
+      ),
+    );
   }
 }

@@ -40,7 +40,12 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   Widget setCoverImage() => Container(
-        color: Colors.grey,
+        decoration: const BoxDecoration(
+          boxShadow: [
+            BoxShadow(blurRadius: 10, color: Colors.black, spreadRadius: 5),
+          ],
+        ),
+        
         child: Image.asset(
           "assets/images/image_01.jpg",
           width: double.infinity,
@@ -49,14 +54,24 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
       );
 
-  Widget setProfileImage() => CircleAvatar(
-        radius: profileHeight / 2,
-        backgroundColor: Colors.grey.shade800,
-        backgroundImage: const AssetImage("assets/images/image_03.jpg"),
+  Widget setProfileImage() => Container(
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          shape: BoxShape.circle,
+          boxShadow: [
+            BoxShadow(blurRadius: 10, color: Colors.black, spreadRadius: 5)
+          ],
+        ),
+        child: CircleAvatar(
+          radius: profileHeight / 2,
+          backgroundColor: Colors.grey.shade800,
+          backgroundImage: const AssetImage("assets/images/image_03.jpg"),
+        ),
       );
 
   Widget setTop() {
     final top = coverHeight - profileHeight / 2;
+
     return Stack(
       clipBehavior: Clip.none,
       alignment: Alignment.center,
