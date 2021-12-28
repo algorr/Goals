@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-Widget setSocialIcon(IconData icon, Function onPress) {
+Widget setSocialIcon(IconData icon, Function onPress, double iconSize, double circleRadius) {
   return CircleAvatar(
-    radius: 25,
+    radius: circleRadius,
     child: Material(
       shape: const CircleBorder(),
       clipBehavior: Clip.hardEdge,
@@ -12,7 +12,7 @@ Widget setSocialIcon(IconData icon, Function onPress) {
         child: Center(
           child: Icon(
             icon,
-            size: 32,
+            size: iconSize,
           ),
         ),
       ),

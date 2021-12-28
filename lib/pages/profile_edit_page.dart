@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:goals/services/profile_edit_service.dart';
+import 'package:goals/widgets/my_social_button.dart';
 import 'package:goals/widgets/my_text_field.dart';
 
 class ProfileEditPage extends StatefulWidget {
@@ -51,46 +53,95 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 20, left: 50, right: 50),
-                child: myTextField(
-                  textEditingController: usernameController,
-                  color: Colors.amberAccent,
-                  hintText: "username",
-                  borderRadius: 20,
+                padding: const EdgeInsets.only(top: 20, right: 20, left: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    setSocialIcon(Icons.person, (){},15,15),
+                    Container(
+                      height: 50,
+                      width: 300,
+                      child: myTextField(
+                        textEditingController: usernameController,
+                        color: Colors.amberAccent,
+                        hintText: "username",
+                        borderRadius: 20,
+                      ),
+                    ),
+                  ],
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 20, right: 50, left: 50),
-                child: myTextField(
-                  textEditingController: linkedinUrlController,
-                  color: Colors.amberAccent,
-                  hintText: "linkedin profile url",
-                  borderRadius: 20,
-                ),
+                padding: const EdgeInsets.only(top: 20, right: 20, left: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    setSocialIcon(FontAwesomeIcons.linkedin, (){},15,15),
+                  Container(
+                    height: 50,
+                    width: 300,
+                    child: myTextField(
+                      textEditingController: linkedinUrlController,
+                      color: Colors.amberAccent,
+                      hintText: "linkedin profile url",
+                      borderRadius: 20,
+                    ),
+                  )
+                ],),
               ),
               Padding(
-                  padding: const EdgeInsets.only(top: 20, right: 50, left: 50),
-                  child: myTextField(
-                    textEditingController: slackUrlController,
-                    color: Colors.amberAccent,
-                    hintText: "slack profile url",
-                    borderRadius: 20,
+                  padding: const EdgeInsets.only(top: 20, right: 20, left: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      setSocialIcon(FontAwesomeIcons.slack, (){},15,15),
+                      Container(
+                        height: 50,
+                        width: 300,
+                        child: myTextField(
+                          textEditingController: slackUrlController,
+                          color: Colors.amberAccent,
+                          hintText: "slack profile url",
+                          borderRadius: 20,
+                        ),
+                      ),
+                    ],
                   )),
               Padding(
-                  padding: const EdgeInsets.only(top: 20, right: 50, left: 50),
-                  child: myTextField(
-                    textEditingController: githubController,
-                    color: Colors.amberAccent,
-                    hintText: "github profile url",
-                    borderRadius: 20,
+                  padding: const EdgeInsets.only(top: 20, right: 20, left: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      setSocialIcon(FontAwesomeIcons.github, (){},15,15),
+                      Container(
+                        height: 50,
+                        width: 300,
+                        child: myTextField(
+                          textEditingController: githubController,
+                          color: Colors.amberAccent,
+                          hintText: "github profile url",
+                          borderRadius: 20,
+                        ),
+                      ),
+                    ],
                   )),
               Padding(
-                  padding: const EdgeInsets.only(top: 20, right: 50, left: 50),
-                  child: myTextField(
-                    textEditingController: twitterController,
-                    color: Colors.amberAccent,
-                    hintText: "twitter profile url",
-                    borderRadius: 20,
+                  padding: const EdgeInsets.only(top: 20, right: 20, left: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      setSocialIcon(FontAwesomeIcons.twitter, (){},15,15),
+                      Container(
+                        height: 50,
+                        width: 300,
+                        child: myTextField(
+                          textEditingController: twitterController,
+                          color: Colors.amberAccent,
+                          hintText: "twitter profile url",
+                          borderRadius: 20,
+                        ),
+                      ),
+                    ],
                   )),
               Padding(
                 padding: const EdgeInsets.all(15.0),

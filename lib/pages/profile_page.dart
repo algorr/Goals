@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:goals/pages/profile_edit_page.dart';
+import 'package:goals/services/profile_edit_service.dart';
 import 'package:goals/widgets/my_social_button.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -14,7 +16,18 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   final double coverHeight = 280;
   final double profileHeight = 144;
+  String? linkedinUrl;
+  String? slackUrl;
+  String? githubUrl;
+  String? twitterUrl;
 
+
+@override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -119,14 +132,18 @@ class _ProfilePageState extends State<ProfilePage> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            setSocialIcon(FontAwesomeIcons.linkedin, () async {
-              const url = "https://www.linkedin.com/ümit-kar";
-              if (await canLaunch(url)) {
-                await launch(url);
-              } else {
-                throw "Could not launch $url";
-              }
-            }),
+            SizedBox(
+              height: 20,
+              width: 20,
+              child: setSocialIcon(FontAwesomeIcons.linkedin, () async {
+                const url = "https://www.linkedin.com/in/ümit-kar/";
+                if (await canLaunch(url)) {
+                  await launch(url);
+                } else {
+                  throw "Could not launch $url";
+                }
+              },32,25),
+            ),
             const SizedBox(
               width: 12,
             ),
@@ -137,18 +154,18 @@ class _ProfilePageState extends State<ProfilePage> {
               } else {
                 throw "Could not launch $url";
               }
-            }),
+            },32,25),
             const SizedBox(
               width: 12,
             ),
             setSocialIcon(FontAwesomeIcons.github, () async {
-              const url = "https://github.com/algorr";
+              const url = "";
               if (await canLaunch(url)) {
                 await launch(url);
               } else {
                 throw "Could not launch $url";
               }
-            }),
+            },32,25),
             const SizedBox(
               width: 12,
             ),
@@ -159,7 +176,7 @@ class _ProfilePageState extends State<ProfilePage> {
               } else {
                 throw "Could not launch $url";
               }
-            }),
+            },32,25),
             const SizedBox(
               width: 12,
             ),
