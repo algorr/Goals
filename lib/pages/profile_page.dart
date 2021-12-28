@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:goals/pages/profile_edit_page.dart';
-import 'package:goals/services/profile_edit_service.dart';
 import 'package:goals/widgets/my_social_button.dart';
-import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -132,18 +130,14 @@ class _ProfilePageState extends State<ProfilePage> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(
-              height: 20,
-              width: 20,
-              child: setSocialIcon(FontAwesomeIcons.linkedin, () async {
-                const url = "https://www.linkedin.com/in/ümit-kar/";
-                if (await canLaunch(url)) {
-                  await launch(url);
-                } else {
-                  throw "Could not launch $url";
-                }
-              },32,25),
-            ),
+            setSocialIcon(FontAwesomeIcons.linkedin, () async {
+              const url = "https://www.linkedin.com/in/ümit-kar/";
+              if (await canLaunch(url)) {
+                await launch(url);
+              } else {
+                throw "Could not launch $url";
+              }
+            },32,25),
             const SizedBox(
               width: 12,
             ),
@@ -159,7 +153,7 @@ class _ProfilePageState extends State<ProfilePage> {
               width: 12,
             ),
             setSocialIcon(FontAwesomeIcons.github, () async {
-              const url = "";
+              const url = "https://github.com/algorr";
               if (await canLaunch(url)) {
                 await launch(url);
               } else {

@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:goals/services/profile_edit_service.dart';
 import 'package:goals/widgets/my_social_button.dart';
 import 'package:goals/widgets/my_text_field.dart';
+import 'package:goals/widgets/sign_in_button.dart';
 
 class ProfileEditPage extends StatefulWidget {
   const ProfileEditPage({Key? key}) : super(key: key);
@@ -18,7 +19,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
   late TextEditingController githubController;
   late TextEditingController twitterController;
 
-  ProfileEditService _profileEditService = ProfileEditService();
+  final ProfileEditService _profileEditService = ProfileEditService();
 
   @override
   void initState() {
@@ -57,7 +58,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    setSocialIcon(Icons.person, (){},15,15),
+                    setSocialIcon(Icons.person, () {}, 15, 15),
                     Container(
                       height: 50,
                       width: 300,
@@ -76,25 +77,26 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    setSocialIcon(FontAwesomeIcons.linkedin, (){},15,15),
-                  Container(
-                    height: 50,
-                    width: 300,
-                    child: myTextField(
-                      textEditingController: linkedinUrlController,
-                      color: Colors.amberAccent,
-                      hintText: "linkedin profile url",
-                      borderRadius: 20,
-                    ),
-                  )
-                ],),
+                    setSocialIcon(FontAwesomeIcons.linkedin, () {}, 15, 15),
+                    Container(
+                      height: 50,
+                      width: 300,
+                      child: myTextField(
+                        textEditingController: linkedinUrlController,
+                        color: Colors.amberAccent,
+                        hintText: "linkedin profile url",
+                        borderRadius: 20,
+                      ),
+                    )
+                  ],
+                ),
               ),
               Padding(
                   padding: const EdgeInsets.only(top: 20, right: 20, left: 20),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      setSocialIcon(FontAwesomeIcons.slack, (){},15,15),
+                      setSocialIcon(FontAwesomeIcons.slack, () {}, 15, 15),
                       Container(
                         height: 50,
                         width: 300,
@@ -112,7 +114,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      setSocialIcon(FontAwesomeIcons.github, (){},15,15),
+                      setSocialIcon(FontAwesomeIcons.github, () {}, 15, 15),
                       Container(
                         height: 50,
                         width: 300,
@@ -130,7 +132,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      setSocialIcon(FontAwesomeIcons.twitter, (){},15,15),
+                      setSocialIcon(FontAwesomeIcons.twitter, () {}, 15, 15),
                       Container(
                         height: 50,
                         width: 300,
@@ -145,14 +147,8 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                   )),
               Padding(
                 padding: const EdgeInsets.all(15.0),
-                child: TextButton(
-                  style: TextButton.styleFrom(
-                    fixedSize: const Size.square(20),
-                    backgroundColor: Colors.amberAccent,
-                      elevation: 10,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20))),
-                  onPressed: () {
+                child: MySignInButton(
+                  onTap: () {
                     _profileEditService.updateProfile(
                         usernameController.text,
                         "profileImage",
@@ -162,7 +158,9 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                         githubController.text,
                         twitterController.text);
                   },
-                  child: Text("Yükle",style: TextStyle(color: Colors.white),),
+                  text: 'Kaydet',
+                  buttonColor: Colors.white,
+                  textColor: Colors.black,
                 ),
               ),
             ],
