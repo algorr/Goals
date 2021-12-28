@@ -120,7 +120,7 @@ class _ProfilePageState extends State<ProfilePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             setSocialIcon(FontAwesomeIcons.linkedin, () async {
-              const url = "https://www.linkedin.com/";
+              const url = "https://www.linkedin.com/ümit-kar";
               if (await canLaunch(url)) {
                 await launch(url);
               } else {
@@ -142,7 +142,7 @@ class _ProfilePageState extends State<ProfilePage> {
               width: 12,
             ),
             setSocialIcon(FontAwesomeIcons.github, () async {
-              const url = "https://github.com/";
+              const url = "https://github.com/algorr";
               if (await canLaunch(url)) {
                 await launch(url);
               } else {
@@ -153,7 +153,7 @@ class _ProfilePageState extends State<ProfilePage> {
               width: 12,
             ),
             setSocialIcon(FontAwesomeIcons.twitter, () async {
-              const url = "https://twitter.com";
+              const url = "https://twitter.com/kar_umit";
               if (await canLaunch(url)) {
                 await launch(url);
               } else {
