@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:goals/pages/profile_edit_page.dart';
+import 'package:goals/widgets/my_social_button.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -12,6 +14,7 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   final double coverHeight = 280;
   final double profileHeight = 144;
+
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +48,6 @@ class _ProfilePageState extends State<ProfilePage> {
             BoxShadow(blurRadius: 10, color: Colors.black, spreadRadius: 5),
           ],
         ),
-        
         child: Image.asset(
           "assets/images/image_01.jpg",
           width: double.infinity,
@@ -117,45 +119,53 @@ class _ProfilePageState extends State<ProfilePage> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            setSocialIcon(FontAwesomeIcons.linkedin),
+            setSocialIcon(FontAwesomeIcons.linkedin, () async {
+              const url = "https://www.linkedin.com/";
+              if (await canLaunch(url)) {
+                await launch(url);
+              } else {
+                throw "Could not launch $url";
+              }
+            }),
             const SizedBox(
               width: 12,
             ),
-            setSocialIcon(FontAwesomeIcons.slack),
+            setSocialIcon(FontAwesomeIcons.slack, () async {
+              const url = "https://slack.com/";
+              if (await canLaunch(url)) {
+                await launch(url);
+              } else {
+                throw "Could not launch $url";
+              }
+            }),
             const SizedBox(
               width: 12,
             ),
-            setSocialIcon(FontAwesomeIcons.github),
+            setSocialIcon(FontAwesomeIcons.github, () async {
+              const url = "https://github.com/";
+              if (await canLaunch(url)) {
+                await launch(url);
+              } else {
+                throw "Could not launch $url";
+              }
+            }),
             const SizedBox(
               width: 12,
             ),
-            setSocialIcon(FontAwesomeIcons.twitter),
+            setSocialIcon(FontAwesomeIcons.twitter, () async {
+              const url = "https://twitter.com";
+              if (await canLaunch(url)) {
+                await launch(url);
+              } else {
+                throw "Could not launch $url";
+              }
+            }),
             const SizedBox(
               width: 12,
             ),
           ],
         ),
       ],
-    );
-  }
-
-  Widget setSocialIcon(IconData icon) {
-    return CircleAvatar(
-      radius: 25,
-      child: Material(
-        shape: const CircleBorder(),
-        clipBehavior: Clip.hardEdge,
-        color: Colors.transparent,
-        child: InkWell(
-          onTap: () {},
-          child: Center(
-            child: Icon(
-              icon,
-              size: 32,
-            ),
-          ),
-        ),
-      ),
     );
   }
 }
