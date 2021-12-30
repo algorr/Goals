@@ -33,7 +33,7 @@ class _ProfilePageState extends State<ProfilePage> {
       floatingActionButton: FloatingActionButton(
         child: const Icon(
           Icons.settings,
-          size: 25,
+          size: 30,
         ),
         onPressed: () {
           Navigator.of(context).push(
