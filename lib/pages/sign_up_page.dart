@@ -30,7 +30,6 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     final myAuth = Provider.of<AuthService>(context);
     return Scaffold(
-
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: SafeArea(

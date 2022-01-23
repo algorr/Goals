@@ -16,10 +16,9 @@ class BoxPage extends StatelessWidget {
           backgroundColor: const Color(0xFF2d3447),
           bottom: const TabBar(tabs: [
             Tab(
-
               icon: Icon(Icons.notifications_active_rounded),
             ),
-            Tab( icon: Icon(Icons.email_rounded)),
+            Tab(icon: Icon(Icons.email_rounded)),
           ]),
         ),
         body: const TabBarView(children: [

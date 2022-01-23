@@ -7,17 +7,19 @@ class FirestoreDbService implements DBBase {
 
   @override
   Future<bool> saveUser(Users user) async {
-    DocumentSnapshot _readUser =  await FirebaseFirestore.instance.doc("users/${user.userID}").get();
-    if(_readUser.data() == null){
-      await _firestore.collection("users").doc(user.userID).set(user.toMap());
+    DocumentSnapshot _readUser =
+        await FirebaseFirestore.instance.doc("users/${user.userID}").get();
+    if (_readUser.data() == null) {
+      await _firestore.collection("users").doc(user.userID).set(user.toJson());
       return true;
-    }else{
+    } else {
       return false;
     }
   }
 
   @override
-  Future<List<Users>> getUserwithPagination(Users enSonGetirilenUser, int getirilecekElemanSayisi) {
+  Future<List<Users>> getUserwithPagination(
+      Users enSonGetirilenUser, int getirilecekElemanSayisi) {
     // TODO: implement getUserwithPagination
     throw UnimplementedError();
   }
