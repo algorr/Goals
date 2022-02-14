@@ -54,10 +54,12 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   Widget setCoverImage() => Container(
+    padding: EdgeInsets.all(5),
         decoration: const BoxDecoration(
           boxShadow: [
-            BoxShadow(blurRadius: 10, color: Colors.black, spreadRadius: 5),
+            BoxShadow(blurRadius: 1, color: Colors.grey, spreadRadius: 1),
           ],
+          
         ),
         child: Image.asset(
           "assets/images/image_01.jpg",

@@ -1,13 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:goals/locator.dart';
 import 'package:goals/pages/landing_page.dart';
 import 'package:goals/services/firebase_auth.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
-  setupLocator();
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(ChangeNotifierProvider(
